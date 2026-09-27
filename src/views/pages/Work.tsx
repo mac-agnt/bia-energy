@@ -355,8 +355,11 @@ export default function Work({ v }: Props) {
                           <button className="ixp" onClick={a?.approve} style={{"height":"30px","padding":"0 14px","border":"0","borderRadius":"var(--cta-r,9px)","background":"var(--accent-fill,var(--accent))","color":"var(--on-accent)","boxShadow":"var(--accent-glow,none)","fontSize":"12.5px","fontWeight":"500","cursor":"pointer","transition":"background .2s var(--ease),transform .18s var(--ease)"}}>
                             {"Approve"}
                           </button>
-                          <button className="ixz" onClick={a?.approve} style={{"height":"30px","padding":"0 13px","border":"1px solid var(--border)","background":"none","borderRadius":"var(--r-ctl,9px)","fontSize":"12.5px","color":"var(--ink)","cursor":"pointer","transition":"border-color .2s var(--ease)"}}>
-                            {"Decline"}
+                          <button className="ixz" onClick={a?.reject} style={{"height":"30px","padding":"0 13px","border":"1px solid var(--border)","background":"none","borderRadius":"var(--r-ctl,9px)","fontSize":"12.5px","color":"var(--ink)","cursor":"pointer","transition":"border-color .2s var(--ease)"}}>
+                            {"Reject"}
+                          </button>
+                          <button className="ixz" onClick={a?.edit} style={{"height":"30px","padding":"0 13px","border":"1px solid var(--border)","background":"none","borderRadius":"var(--r-ctl,9px)","fontSize":"12.5px","color":"var(--ink)","cursor":"pointer","transition":"border-color .2s var(--ease)"}}>
+                            {"Edit"}
                           </button>
                         </>
                       )}

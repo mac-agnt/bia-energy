@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { arr, cat, css, cx, pc, txt } from "../../runtime/template";
+import DashExtras from "../../bia/DashExtras";
 
 type Props = { v: any };
 
@@ -50,7 +51,7 @@ export default function Dashboard({ v }: Props) {
                 </button>
               </div>
               <div style={{"fontSize":"12.5px","color":"var(--dim)","marginTop":"6px"}}>
-                {"Type anything about the business as a filter — a region, a project, a customer segment — and Pulse builds a live metric set for it. Pick a registered dimension below, or name your own."}
+                {"Type anything about the business as a filter (a region, a customer segment, a vehicle type) and Pulse builds a live metric set for it. Pick a registered dimension below, or name your own."}
               </div>
               {arr(v.filterGroups).map((g: any, i91: number) => (
                 <Fragment key={i91}>
@@ -71,7 +72,7 @@ export default function Dashboard({ v }: Props) {
                 </Fragment>
               ))}
               <div style={{"display":"flex","gap":"8px","marginTop":"18px"}}>
-                <input value={v.customFilter ?? ""} onChange={v.setCustomFilter} onKeyDown={v.onCustomFilterKey} placeholder="e.g. Scotland expansion, or Late supplier deliveries" style={{"flex":"1","minWidth":"0","height":"36px","padding":"0 15px","background":"var(--surface-2)","border":"1px solid var(--border)","borderRadius":"var(--r-md,13px)","outline":"0","fontSize":"13px"}} />
+                <input value={v.customFilter ?? ""} onChange={v.setCustomFilter} onKeyDown={v.onCustomFilterKey} placeholder="e.g. Naas and Kildare customers, or Tanker turnaround" style={{"flex":"1","minWidth":"0","height":"36px","padding":"0 15px","background":"var(--surface-2)","border":"1px solid var(--border)","borderRadius":"var(--r-md,13px)","outline":"0","fontSize":"13px"}} />
                 <button className={cx("ixp", "ixq")} onClick={v.addCustomFilter} style={{"height":"36px","padding":"0 17px","border":"0","borderRadius":"var(--cta-r,9px)","background":"var(--accent-fill,var(--accent))","color":"var(--on-accent)","boxShadow":"var(--accent-glow,none)","fontSize":"13px","fontWeight":"500","cursor":"pointer","transition":"background .2s var(--ease),transform .18s var(--ease)"}}>
                   {"Build dashboard"}
                 </button>
@@ -79,6 +80,7 @@ export default function Dashboard({ v }: Props) {
             </div>
           </>
         )}
+        {v.isDashboard && <DashExtras aspect={String(v.aspectId ?? "")} go={(page: string, tab?: string) => (tab ? v.setModTab(page, tab) : v.goPage(page))} />}
         <div style={{"animation":"riseIn .4s var(--ease) both"}}>
           <div style={{"display":"flex","alignItems":"center","gap":"10px","padding":"0 4px 14px"}}>
             <span style={css(cat("width:9px;height:9px;flex:none;border-radius:2px;background:", v.area?.color))} />

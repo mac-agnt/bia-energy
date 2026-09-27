@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { arr, css, cx, txt } from "../../runtime/template";
 import HomeThread from "./HomeThread";
 import HomeWidgetRail from "./HomeWidgetRail";
+import HomeBriefing from "./HomeBriefing";
 
 type Props = { v: any };
 
@@ -43,6 +44,7 @@ export default function Home({ v }: Props) {
                     {txt(v.homeSubline)}
                   </div>
                 </div>
+                <HomeBriefing v={v} />
               </>
             )}
             {v.threadOpen && <HomeThread v={v} />}

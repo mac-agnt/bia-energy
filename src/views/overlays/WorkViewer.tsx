@@ -279,8 +279,8 @@ export default function WorkViewer({ v }: Props) {
             </span>
             {v.workViewer?.pending && (
               <>
-                <button className="ixz" onClick={v.workViewer?.close} style={{"height":"34px","padding":"0 14px","border":"1px solid var(--border)","borderRadius":"var(--r-ctl,9px)","background":"none","fontSize":"12.5px","color":"var(--ink)","cursor":"pointer","transition":"border-color .2s var(--ease)"}}>
-                  {"Request changes"}
+                <button className="ixz" onClick={v.workViewer?.reject} style={{"height":"34px","padding":"0 14px","border":"1px solid var(--border)","borderRadius":"var(--r-ctl,9px)","background":"none","fontSize":"12.5px","color":"var(--ink)","cursor":"pointer","transition":"border-color .2s var(--ease)"}}>
+                  {"Reject"}
                 </button>
                 <button className="ixp" onClick={v.workViewer?.approve} style={{"height":"34px","padding":"0 18px","border":"0","borderRadius":"var(--cta-r,9px)","background":"var(--accent-fill,var(--accent))","color":"var(--on-accent)","boxShadow":"var(--accent-glow,none)","fontSize":"13px","fontWeight":"500","cursor":"pointer","transition":"background .2s var(--ease),transform .18s var(--ease)"}}>
                   {"Approve"}
@@ -293,7 +293,7 @@ export default function WorkViewer({ v }: Props) {
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m5 12.5 4.5 4.5L19 7.5" />
                   </svg>
-                  {"Decided"}
+                  {txt(v.workViewer?.decidedLabel)}
                 </span>
               </>
             )}

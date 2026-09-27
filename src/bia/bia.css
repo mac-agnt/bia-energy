@@ -1,0 +1,17 @@
+@keyframes biaGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes biaFade{from{opacity:0}to{opacity:1}}
+@keyframes biaDrawer{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes biaToast{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes biaDash{to{stroke-dashoffset:-16}}
+@keyframes biaPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes biaFlow{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
+.bia-row{transition:background .15s var(--ease)}
+.bia-row:hover{background:var(--surface-2)}
+@media (max-width: 900px){.bia-grid{grid-template-columns:1fr !important}.bia-grid > *{grid-column:auto !important}}
+@media (prefers-reduced-motion: reduce){
+  .bia-row{transition:none}
+  [style*="biaDash"],[style*="biaPulse"],[style*="biaFlow"]{animation:none !important}
+}
+/* Ontology record focus overlays: stack below the graph on narrow panes. */
+@media (max-width: 1180px){.bia-onto-chains{display:none !important}}
+@media (max-width: 900px){.bia-onto-panel{top:auto !important;height:52% !important}}

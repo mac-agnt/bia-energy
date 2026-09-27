@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { arr, cat, css, txt } from "../../runtime/template";
 import AgentFace from "../../components/AgentFace";
+import AgentProfile from "./AgentProfile";
 
 type Props = { v: any };
 
@@ -132,6 +133,7 @@ export default function Agents({ v }: Props) {
             </button>
           </div>
           <div style={{"flex":"1","minHeight":"0","overflowY":"auto","padding":"8px 24px 16px"}}>
+            {v.agentProfile?.show && v.agentProfile?.compact && <AgentProfile p={v.agentProfile} compact />}
             {arr(v.agentThread).map((m: any, i113: number) => (
               <Fragment key={i113}>
                 <div style={css(m?.wrapStyle)}>
@@ -202,6 +204,25 @@ export default function Agents({ v }: Props) {
                       </div>
                     </>
                   )}
+                  {m?.isActions && (
+                    <div style={{"display":"flex","flexWrap":"wrap","gap":"8px","padding":"0 2px"}}>
+                      {arr(m?.actions).map((a: any, ia: number) => (
+                        <button key={ia} className={a?.primary ? "ixp" : "ixz"} onClick={a?.run} style={a?.primary
+                          ? {"height":"32px","padding":"0 15px","border":"0","borderRadius":"999px","background":"var(--accent-fill,var(--accent))","color":"var(--on-accent)","boxShadow":"var(--accent-glow,none)","fontSize":"12.5px","fontWeight":"500","cursor":"pointer"}
+                          : {"height":"32px","padding":"0 14px","border":"1px solid var(--border)","borderRadius":"999px","background":"var(--surface)","color":"var(--ink)","fontSize":"12.5px","cursor":"pointer"}}>
+                          {txt(a?.label)}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {m?.isWriteBack && (
+                    <div style={{"display":"inline-flex","alignItems":"center","gap":"9px","maxWidth":"min(72%,560px)","padding":"9px 14px","borderRadius":"14px","background":"var(--accent-faint)","border":"1px solid var(--accent-line)","fontSize":"13px","lineHeight":"1.45","color":"var(--ink)"}}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{"flex":"none"}}>
+                        <path d="m5 12.5 4.5 4.5L19 7.5" />
+                      </svg>
+                      {txt(m?.writeBack)}
+                    </div>
+                  )}
                 </div>
               </Fragment>
             ))}
@@ -227,6 +248,7 @@ export default function Agents({ v }: Props) {
             </div>
           </div>
         </div>
+        {v.agentProfile?.show && v.agentProfile?.wide && <AgentProfile p={v.agentProfile} />}
       </div>
     </>
   );

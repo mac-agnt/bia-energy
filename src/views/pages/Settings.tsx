@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import IntegrationActivity from "../../bia/IntegrationActivity";
 import { arr, cat, css, txt } from "../../runtime/template";
 import PeoplePanel from "./PeoplePanel";
 
@@ -19,7 +20,7 @@ export default function Settings({ v }: Props) {
             <div style={{"fontSize":"14px","color":"var(--dim)","marginTop":"9px"}}>
               {"How Pulse is set up for "}
               {txt(v.admin?.company)}
-              {" — people, permissions, systems and governance."}
+              {": people, teams, permissions, systems, governance and AI controls."}
             </div>
           </div>
           <button className="ix10" style={{"flex":"none","height":"36px","display":"flex","alignItems":"center","gap":"8px","padding":"0 15px","background":"var(--chip)","border":"1px solid var(--chip-border)","borderRadius":"var(--r-ctl,13px)","fontSize":"13px","color":"var(--body)","cursor":"pointer","transition":"border-color .2s var(--ease),color .2s var(--ease)"}}>
@@ -169,6 +170,9 @@ export default function Settings({ v }: Props) {
                                 <span style={{"flex":"1","minWidth":"0","fontSize":"15px","fontWeight":"600","letterSpacing":"-.25px","overflow":"hidden","textOverflow":"ellipsis","whiteSpace":"nowrap"}}>
                                   {txt(it?.pairTitle)}
                                 </span>
+                                <span style={css(it?.accessStyle)}>
+                                  {txt(it?.access)}
+                                </span>
                                 <span style={css(it?.statusStyle)}>
                                   {txt(it?.status)}
                                 </span>
@@ -207,6 +211,7 @@ export default function Settings({ v }: Props) {
                         </Fragment>
                       ))}
                     </div>
+                    <IntegrationActivity />
                   </>
                 )}
                 {v.admin?.panel?.isDataHealth && (
